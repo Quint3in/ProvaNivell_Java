@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class AerialRobot extends Robot{
 
-    private int maxHeightMeters;
-    private int flightEnduranceMinutes;
+    private final int maxHeightMeters;
+    private final int flightEnduranceMinutes;
 
     public AerialRobot(String name, String manufacturer, int manufacturingYear, Date competitionRegisterDate,
                        int maxHeightMeters, int flightEnduranceMinutes)

@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class AquaticRobot extends Robot{
 
-    private int maxDepthMeters;
-    private PropulsionType propulsionType;
+    private final int maxDepthMeters;
+    private final PropulsionType propulsionType;
 
     public AquaticRobot(String name, String manufacturer, int manufacturingYear, Date competitionRegisterDate,
                         int maxDepthMeters, PropulsionType propulsionType)

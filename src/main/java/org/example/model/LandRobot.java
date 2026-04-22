@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class LandRobot extends Robot{
 
-    private int maxSpeedKmH;
-    private TractionType tractionType;
+    private final int maxSpeedKmH;
+    private final TractionType tractionType;
 
     public LandRobot(String name, String manufacturer, int manufacturingYear, Date competitionRegisterDate,
                      int maxSpeedKmH, TractionType tractionType)
