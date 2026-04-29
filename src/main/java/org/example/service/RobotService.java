@@ -1,8 +1,11 @@
 package org.example.service;
 
+import org.example.model.ResistanceEvaluable;
 import org.example.repository.RobotRepository;
 import org.example.model.LandRobot;
 import org.example.model.Robot;
+
+import java.util.List;
 
 public class RobotService {
 
@@ -11,32 +14,39 @@ public class RobotService {
     public RobotService(RobotRepository robotRepository) {
         this.robotRepository = robotRepository;
     }
-    public boolean addRobot(Robot robot) {
-        return this.robotRepository.getRobots().add(robot);
+    public void addRobot(Robot robot) {
+        this.robotRepository.saveRobot(robot);
     }
     public Robot removeLastRobot() {
-        return this.robotRepository.getRobots().removeLast();
+        return this.robotRepository.deleteLastRobot();
     }
 
-    public void showRobotsTechnicalDescription() {
-        this.robotRepository.getRobots().forEach(robot -> System.out.println(robot.getTechnicalDescription()));
+    public List<String> getRobotTechnicalDescriptions() {
+        return this.robotRepository.getRobots().stream()
+                .map(Robot::getTechnicalDescription)
+                .toList();
     }
 
-    public void showLandRobotsPerMinSpeed(int minSpeed) {
-        this.robotRepository.getRobots().stream()
+    public List<Robot> getLandRobotsPerMinSpeed(int minSpeed) {
+        return this.robotRepository.getRobots().stream()
                 .filter(robot -> {
-                    if (robot instanceof LandRobot) {
-                        LandRobot landRobot1 = (LandRobot) robot;
+                    if (robot instanceof LandRobot landRobot1) {
                         return landRobot1.getMaxSpeedKmH() >= minSpeed;
                     }
                     return false;
-                }).forEach(robot -> System.out.println(robot.getTechnicalDescription()));
-
+                }).toList();
     }
 
-    public void showRobotsbyManufacturer(String manufacturer) {
-        this.robotRepository.getRobots().stream()
+    public List<Robot> getRobotsbyManufacturer(String manufacturer) {
+        return this.robotRepository.getRobots().stream()
                 .filter(robot -> robot.getManufacturer().equalsIgnoreCase(manufacturer))
-                .forEach(robot -> System.out.println(robot.getTechnicalDescription()));
+                .toList();
+    }
+
+    public List<ResistanceEvaluable> getResistanceEvaluableRobots() {
+        return this.robotRepository.getRobots().stream()
+                .filter(robot -> {return robot instanceof ResistanceEvaluable;})
+                .map(robot -> (ResistanceEvaluable) robot)
+                .toList();
     }
 }

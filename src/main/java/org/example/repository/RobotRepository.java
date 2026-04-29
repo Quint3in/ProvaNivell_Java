@@ -13,6 +13,12 @@ public class RobotRepository {
         this.robots = new ArrayList<>();
     }
     public List<Robot> getRobots() {
-        return robots;
+        return new ArrayList<>(robots);
+    }
+    public void saveRobot(Robot robot) {
+        this.robots.add(robot);
+    }
+    public Robot deleteLastRobot() {
+        return this.robots.removeLast();
     }
 }

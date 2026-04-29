@@ -1,13 +1,14 @@
 package org.example.model;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Year;
 
-public class AquaticRobot extends Robot{
+public class AquaticRobot extends Robot {
 
     private final int maxDepthMeters;
     private final PropulsionType propulsionType;
 
-    public AquaticRobot(String name, String manufacturer, int manufacturingYear, Date competitionRegisterDate,
+    public AquaticRobot(String name, String manufacturer, Year manufacturingYear, LocalDate competitionRegisterDate,
                         int maxDepthMeters, PropulsionType propulsionType)
     {
         super(name, manufacturer, manufacturingYear, competitionRegisterDate);

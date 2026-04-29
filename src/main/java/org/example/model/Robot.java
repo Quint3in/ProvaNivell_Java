@@ -1,16 +1,16 @@
 package org.example.model;
 
-
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Year;
 
 public abstract class Robot {
     protected final String name;
     protected final String manufacturer;
-    protected final int manufacturingYear;
-    protected final Date competitionRegisterDate;
+    protected final Year manufacturingYear;
+    protected final LocalDate competitionRegisterDate;
 
 
-    public Robot(String name, String manufacturer, int manufacturingYear, Date competitionRegisterDate) {
+    public Robot(String name, String manufacturer, Year manufacturingYear, LocalDate competitionRegisterDate) {
         this.name = name;
         this.manufacturer = manufacturer;
         this.manufacturingYear = manufacturingYear;
