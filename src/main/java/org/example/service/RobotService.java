@@ -45,7 +45,7 @@ public class RobotService {
 
     public List<ResistanceEvaluable> getResistanceEvaluableRobots() {
         return this.robotRepository.getRobots().stream()
-                .filter(robot -> {return robot instanceof ResistanceEvaluable;})
+                .filter(robot -> robot instanceof ResistanceEvaluable)
                 .map(robot -> (ResistanceEvaluable) robot)
                 .toList();
     }
